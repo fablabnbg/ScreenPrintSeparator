@@ -42,6 +42,9 @@ You can find the The different dither patters [here]](https://www.imagemagick.or
 
 
 #### All in one:
+
+This might take some time (2 minutes on MacBookPro)
+
 ```sh
 $ convert balloons.jpg  -set option:distort:viewport '%wx%h+0+0' -colorspace CMYK -separate null: \( -size 2x2 xc: \( +clone -negate \) +append \( +clone -negate \) -append \) -virtual-pixel tile -filter gaussian \( +clone -distort SRT 2,60 \) +swap  \( +clone -distort SRT 2,30 \) +swap \( +clone -distort SRT 2,45 \) +swap \( +clone -distort SRT 2,0  -blur 0x0.7 \) +swap +delete -compose Overlay -layers composite -set colorspace CMYK -combine -colorspace RGB offset_balloons.png
 ```
